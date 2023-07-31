@@ -29,37 +29,58 @@ class db_SelectFilterByName():
                 controllers.varGlobal.adjustmentPanel.var_parametersFilter_selectFilterColor_Blue_Max                               = data[7]
 
                 #
+                #Defined Area For Filter init
+                #
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_DefinedAreaForFilter_init_X                              = data[8]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_DefinedAreaForFilter_init_Y                              = data[9]
+
+                #
                 #Iterations
                 #
-                controllers.varGlobal.adjustmentPanel.var_parametersFilter_varTrackbar_iterations_erode                             = data[8]
-                controllers.varGlobal.adjustmentPanel.var_parametersFilter_varTrackbar_iterations_dilate                            = data[9]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_Iterations_erode                                         = data[10]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_Iterations_dilate                                        = data[11]
 
                 #
                 #Seam according to color
                 #
                 #Vertically     - White
-                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Min       = data[10]
-                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Max       = data[11]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Min       = data[12]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Max       = data[13]
+                #Area
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpWhiteVer_JumpSize_Field_X                  = data[14]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpWhiteVer_JumpSize_Field_Y                  = data[15]
+
                 #Horizontally   - White
-                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingBlackColorHorizontally_JumpSize_Min     = data[12]
-                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingBlackColorHorizontally_JumpSize_Max     = data[13]
-                #Vertically     - Black
-                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingBlackColorVertically_JumpSize_Min       = data[14]
-                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingBlackColorVertically_JumpSize_Max       = data[15]
-                #Horizontally   - Black
                 controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingBlackColorHorizontally_JumpSize_Min     = data[16]
                 controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingBlackColorHorizontally_JumpSize_Max     = data[17]
+                #Area
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpWhiteVer_JumpSize_Field_X                  = data[18]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpWhiteVer_JumpSize_Field_Y                  = data[19]
+
+                #Vertically     - Black
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingBlackColorVertically_JumpSize_Min       = data[20]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingBlackColorVertically_JumpSize_Max       = data[21]
+                #Area
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpWhiteVer_JumpSize_Field_X                  = data[22]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpWhiteVer_JumpSize_Field_Y                  = data[23]
+
+                #Horizontally   - Black
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingBlackColorHorizontally_JumpSize_Min     = data[24]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingBlackColorHorizontally_JumpSize_Max     = data[25]
+                #Area
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpWhiteVer_JumpSize_Field_X                  = data[26]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpWhiteVer_JumpSize_Field_Y                  = data[27]
 
                 #
                 #Filter Object Size 
                 #
-                controllers.varGlobal.adjustmentPanel.var_parametersFilter_FoundObjectSizeFilter_Min                                = data[18]
-                controllers.varGlobal.adjustmentPanel.var_parametersFilter_FoundObjectSizeFilter_Max                                = data[19]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_FoundObjectSizeFilter_Min                                = data[28]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_FoundObjectSizeFilter_Max                                = data[29]
 
-                controllers.varGlobal.adjustmentPanel.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Min                  = data[20]
-                controllers.varGlobal.adjustmentPanel.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Max                  = data[21]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Min                  = data[30]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Max                  = data[31]
 
-                controllers.varGlobal.adjustmentPanel.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Min                = data[22]
-                controllers.varGlobal.adjustmentPanel.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Max                = data[23]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Min                = data[32]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Max                = data[33]
                 
             return data

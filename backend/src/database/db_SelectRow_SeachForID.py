@@ -32,8 +32,8 @@ class selectRow_SearchForID():
                 #
                 #Iterations
                 #
-                controllers.varGlobal.adjustmentPanel.var_parametersFilter_varTrackbar_iterations_erode                             = data[8]
-                controllers.varGlobal.adjustmentPanel.var_parametersFilter_varTrackbar_iterations_dilate                            = data[9]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_Iterations_erode                                         = data[8]
+                controllers.varGlobal.adjustmentPanel.var_parametersFilter_Iterations_dilate                                        = data[9]
 
                 #
                 #Seam according to color

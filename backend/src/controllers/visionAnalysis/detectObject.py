@@ -330,7 +330,7 @@ def detect_motion():
 				frame03 	= imutils.resize(frame03, 		width=400, height=400)
 				frame03 	= cv2.erode(frame03, 
 									None, 
-									iterations = controllers.adjustmentPanel.varTrackbar_iterations_erode)
+									iterations = controllers.varGlobal.adjustmentPanel.var_parametersFilter_Iterations_erode)
 				#hsv 	= cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 				frame01 	= cv2.inRange(frame03, lower, upper)
 				#result 	= cv2.bitwise_and(frame, frame, mask=mask)

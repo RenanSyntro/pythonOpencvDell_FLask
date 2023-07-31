@@ -44,7 +44,10 @@ if __name__ == '__main__':
 
 	# start the flask app
 	app.run(host="localhost", port=8000,
-		threaded=True, use_reloader=False)
+         	debug=True,
+			threaded=True, 
+            use_reloader=False
+            )
 
 cv2.destroyAllWindows()
 

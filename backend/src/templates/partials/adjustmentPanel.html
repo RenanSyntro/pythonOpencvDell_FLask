@@ -1,5 +1,6 @@
 <form method="post">
   <div class="inputsTrack">
+
     <div class=inputTrack>
       <div class="labelRange">
         <span class="bound_label_Left">0</span>
@@ -7,15 +8,17 @@
         <span class="bound_label_Right">255</span>
       </div>
       <div class="valueRange">
-        <h4>{{ trackbar_parametersFilter_selectFilterColor_Red_Min }}</h4>
-        <input type="range" min="0" max="255" name="trackbar_parametersFilter_selectFilterColor_Red_Min"  value="{{ var_parametersFilter_selectFilterColor_Red_Min }}" onchange="send()">
+        <h4>{{ varhtml_parametersFilter_selectFilterColor_Red_Min }}</h4>
+        <input type="range" min="0" max="255" name="trackbar_parametersFilter_selectFilterColor_Red_Min"  
+          value="{{ varhtml_parametersFilter_selectFilterColor_Red_Min }}" 
+          onchange="send()">
       </div>
       <div class="valueRange">
-        <input type="number" min="0" max="255" name="number_parametersFilter_selectFilterColor_Red_Min"   value="{{ var_parametersFilter_selectFilterColor_Red_Min }}" onchange="send()">
+        <input type="number" min="0" max="255" name="number_parametersFilter_selectFilterColor_Red_Min"   
+          value="{{ varhtml_parametersFilter_selectFilterColor_Red_Min }}" 
+          onchange="send()">
       </div>
     </div>
-
-    {% include "components/cardinputTrack.html" %}
 
     <div class=inputTrack>
       <div class="labelRange">
@@ -24,11 +27,34 @@
         <span class="bound_label_Right">255</span>
       </div>
       <div class="valueRange">
-        <h4>{{ trackbar_parametersFilter_selectFilterColor_Red_Min }}</h4>
-        <input type="range" min="0" max="255" name="trackbar3" value="{{ varTrackbar3 }}" onchange="send()">
+        <h4>{{ varhtml_parametersFilter_selectFilterColor_Blue_Min }}</h4>
+        <input type="range" min="0" max="255" name="trackbar_parametersFilter_selectFilterColor_Blue_Min" 
+          value="{{ varhtml_parametersFilter_selectFilterColor_Blue_Min }}" 
+          onchange="send()">
       </div>
       <div class="valueRange">
-        <input type="number" min="0" max="255" name="number3" value="{{ varTrackbar3 }}" onchange="send()">
+        <input type="number" min="0" max="255" name="number_parametersFilter_selectFilterColor_Blue_Min" 
+          value="{{ varhtml_parametersFilter_selectFilterColor_Blue_Min }}" 
+          onchange="send()">
+      </div>
+    </div>
+
+    <div class=inputTrack>
+      <div class="labelRange">
+        <span class="bound_label_Left">0</span>
+        <span> L - Verde </span>
+        <span class="bound_label_Right">255</span>
+      </div>
+      <div class="valueRange">
+        <h4>{{ varhtml_parametersFilter_selectFilterColor_Green_Min }}</h4>
+        <input type="range" min="0" max="255" name="trackbar_parametersFilter_selectFilterColor_Green_Min"  
+          value="{{ varhtml_parametersFilter_selectFilterColor_Green_Min }}" 
+          onchange="send()">
+      </div>
+      <div class="valueRange">
+        <input type="number" min="0" max="255" name="number_parametersFilter_selectFilterColor_Green_Min"   
+          value="{{ varhtml_parametersFilter_selectFilterColor_Green_Min }}" 
+          onchange="send()">
       </div>
     </div>
 
@@ -39,26 +65,15 @@
         <span class="bound_label_Right">255</span>
       </div>
       <div class="valueRange">
-        <h4>{{ varTrackbar4 }}</h4>
-        <input type="range" min="0" max="255" name="trackbar4" value="{{ varTrackbar4 }}" onchange="send()">
+        <h4>{{ varhtml_parametersFilter_selectFilterColor_Red_Max }}</h4>
+        <input type="range" min="0" max="255" name="trackbar_parametersFilter_selectFilterColor_Red_Max" 
+          value="{{ varhtml_parametersFilter_selectFilterColor_Red_Max }}" 
+          onchange="send()">
       </div>
       <div class="valueRange">
-        <input type="number" min="0" max="255" name="number4" value="{{ varTrackbar4 }}" onchange="send()">
-      </div>
-    </div>
-
-    <div class=inputTrack>
-      <div class="labelRange">
-        <span class="bound_label_Left">0</span>
-        <span> U - Verde </span>
-        <span class="bound_label_Right">255</span>
-      </div>
-      <div class="valueRange">
-        <h4>{{ varTrackbar5 }}</h4>
-        <input type="range" min="0" max="255" name="trackbar5" value="{{ varTrackbar5 }}" onchange="send()">
-      </div>
-      <div class="valueRange">
-        <input type="number" min="0" max="255" name="number5" value="{{ varTrackbar5 }}" onchange="send()">
+        <input type="number" min="0" max="255" name="number_parametersFilter_selectFilterColor_Red_Max" 
+          value="{{ varhtml_parametersFilter_selectFilterColor_Red_Max }}" 
+          onchange="send()">
       </div>
     </div>
 
@@ -69,29 +84,14 @@
         <span class="bound_label_Right">255</span>
       </div>
       <div class="valueRange">
-        <h4>{{ varTrackbar6 }}</h4>
-        <input type="range" min="0" max="255" name="trackbar6" value="{{ varTrackbar6 }}" onchange="send()">
-      </div>
-      <div class="valueRange">
-        <input type="number" min="0" max="255" name="number6" value="{{ varTrackbar6 }}" onchange="send()">
-      </div>
-    </div>
-  </div>
-
-  <div class="inputsTrack">
-    <div class=inputTrack>
-      <div class="labelRange">
-        <span class="bound_label_Left">0</span>
-        <span> Tam. Min. LV </span>
-        <span class="bound_label_Right">3000</span>
-      </div>
-      <div class="valueRange">
-        <h4>{{ varTrackbar_TamMinLv }}</h4>
-        <input type="range" min="0" max="3000" name="trackbar_TamMinLv" value="{{ varTrackbar_TamMinLv }}"
+        <h4>{{ varhtml_parametersFilter_selectFilterColor_Blue_Max }}</h4>
+        <input type="range" min="0" max="255" name="trackbar_parametersFilter_selectFilterColor_Blue_Max" 
+          value="{{ varhtml_parametersFilter_selectFilterColor_Blue_Max }}" 
           onchange="send()">
       </div>
       <div class="valueRange">
-        <input type="number" min="0" max="3000" name="number_TamMinLv" value="{{ varTrackbar_TamMinLv }}"
+        <input type="number" min="0" max="255" name="number_parametersFilter_selectFilterColor_Blue_Max" 
+          value="{{ varhtml_parametersFilter_selectFilterColor_Blue_Max }}" 
           onchange="send()">
       </div>
     </div>
@@ -99,83 +99,18 @@
     <div class=inputTrack>
       <div class="labelRange">
         <span class="bound_label_Left">0</span>
-        <span> Tam. Max. LV </span>
-        <span class="bound_label_Right">3000</span>
+        <span> U - Verde </span>
+        <span class="bound_label_Right">255</span>
       </div>
       <div class="valueRange">
-        <h4>{{ varTrackbar_TamMaxLv }}</h4>
-        <input type="range" min="0" max="3000" name="trackbar_TamMaxLv" value="{{ varTrackbar_TamMaxLv }}"
+        <h4>{{ varhtml_parametersFilter_selectFilterColor_Green_Max }}</h4>
+        <input type="range" min="0" max="255" name="trackbar_parametersFilter_selectFilterColor_Green_Max" 
+          value="{{ varhtml_parametersFilter_selectFilterColor_Green_Max }}" 
           onchange="send()">
       </div>
       <div class="valueRange">
-        <input type="number" min="0" max="3000" name="number_TamMaxLv" value="{{ varTrackbar_TamMaxLv }}"
-          onchange="send()">
-      </div>
-    </div>
-
-    <div class=inputTrack>
-      <div class="labelRange">
-        <span class="bound_label_Left">0</span>
-        <span> Tam. Min. LH </span>
-        <span class="bound_label_Right">3000</span>
-      </div>
-      <div class="valueRange">
-        <h4>{{ varTrackbar_TamMinLh }}</h4>
-        <input type="range" min="0" max="3000" name="trackbar_TamMinLh" value="{{ varTrackbar_TamMinLh }}"
-          onchange="send()">
-      </div>
-      <div class="valueRange">
-        <input type="number" min="0" max="3000" name="number_TamMinLh" value="{{ varTrackbar_TamMinLh }}"
-          onchange="send()">
-      </div>
-    </div>
-
-    <div class=inputTrack>
-      <div class="labelRange">
-        <span class="bound_label_Left">0</span>
-        <span> Tam. Max. LH </span>
-        <span class="bound_label_Right">3000</span>
-      </div>
-      <div class="valueRange">
-        <h4>{{ varTrackbar_TamMaxLh }}</h4>
-        <input type="range" min="0" max="3000" name="trackbar_TamMaxLh" value="{{ varTrackbar_TamMaxLh }}"
-          onchange="send()">
-      </div>
-      <div class="valueRange">
-        <input type="number" min="0" max="3000" name="number_TamMaxLh" value="{{ varTrackbar_TamMaxLh }}"
-          onchange="send()">
-      </div>
-    </div>
-
-    <div class=inputTrack>
-      <div class="labelRange">
-        <span class="bound_label_Left">0</span>
-        <span> Tam. Min </span>
-        <span class="bound_label_Right">3000</span>
-      </div>
-      <div class="valueRange">
-        <h4>{{ varTrackbar_TamMin }}</h4>
-        <input type="range" min="0" max="3000" name="trackbar_TamMin" value="{{ varTrackbar_TamMin }}"
-          onchange="send()">
-      </div>
-      <div class="valueRange">
-        <input type="number" min="0" max="3000" name="number_TamMin" value="{{ varTrackbar_TamMin }}" onchange="send()">
-      </div>
-    </div>
-
-    <div class=inputTrack>
-      <div class="labelRange">
-        <span class="bound_label_Left">0</span>
-        <span> Tam. Max </span>
-        <span class="bound_label_Right">100000</span>
-      </div>
-      <div class="valueRange">
-        <h4>{{ varTrackbar_TamMax }}</h4>
-        <input type="range" min="0" max="100000" name="trackbar_TamMax" value="{{ varTrackbar_TamMax }}"
-          onchange="send()">
-      </div>
-      <div class="valueRange">
-        <input type="number" min="0" max="100000" name="number_TamMax" value="{{ varTrackbar_TamMax }}"
+        <input type="number" min="0" max="255" name="number_parametersFilter_selectFilterColor_Green_Max" 
+          value="{{ varhtml_parametersFilter_selectFilterColor_Green_Max }}" 
           onchange="send()">
       </div>
     </div>
@@ -189,12 +124,14 @@
         <span class="bound_label_Right">10</span>
       </div>
       <div class="valueRange">
-        <h4>{{ varTrackbar_iterations_erode }}</h4>
-        <input type="range" min="0" max="10" name="trackbar_iterations_erode" value="{{ varTrackbar_iterations_erode }}"
+        <h4>{{ varhtml_parametersFilter_iterations_erode }}</h4>
+        <input type="range" min="0" max="10" name="trackbar_parametersFilter_iterations_erode" 
+          value="{{ varhtml_parametersFilter_iterations_erode }}"
           onchange="send()">
       </div>
       <div class="valueRange">
-        <input type="number" min="0" max="10" name="number_iterations_erode" value="{{ varTrackbar_iterations_erode }}"
+        <input type="number" min="0" max="10" name="number_parametersFilter_iterations_erode" 
+          value="{{ varhtml_parametersFilter_iterations_erode }}"
           onchange="send()">
       </div>
     </div>
@@ -206,64 +143,207 @@
         <span class="bound_label_Right">10</span>
       </div>
       <div class="valueRange">
-        <h4>{{ varTrackbar_iterations_dilate }}</h4>
-        <input type="range" min="0" max="10" name="trackbar_iterations_dilate"
-          value="{{ varTrackbar_iterations_dilate }}" onchange="send()">
+        <h4>{{ varhtml_parametersFilter_Iterations_dilate }}</h4>
+        <input type="range" min="0" max="10" name="trackbar_parametersFilter_iterations_dilate"
+          value="{{ varhtml_parametersFilter_Iterations_dilate }}" 
+          onchange="send()">
       </div>
       <div class="valueRange">
-        <input type="number" min="0" max="10" name="number_iterations_dilate"
-          value="{{ varTrackbar_iterations_dilate }}" onchange="send()">
+        <input type="number" min="0" max="10" name="number_parametersFilter_iterations_dilate"
+          value="{{ varhtml_parametersFilter_Iterations_dilate }}" 
+          onchange="send()">
       </div>
     </div>
 
     <div class=inputTrack>
       <div class="labelRange">
         <span class="bound_label_Left">0</span>
-        <span> Tamanho linha horizontal </span>
-        <span class="bound_label_Right">1000</span>
+        <span>Emen. Tam. Min. LV </span>
+        <span class="bound_label_Right">3000</span>
       </div>
       <div class="valueRange">
-        <h4>{{ varTrackbar_LineHorizontal }}</h4>
-        <input type="range" min="0" max="1000" name="trackbar_LineHorizontal"
-          value="{{ varTrackbar_LineHorizontal }}" onchange="send()">
+        <h4>{{ varhtml_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Min }}</h4>
+        <input type="range" min="0" max="3000" name="trackbar_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Min" 
+          value="{{ varhtml_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Min }}"
+          onchange="send()">
       </div>
       <div class="valueRange">
-        <input type="number" min="0" max="1000" name="number_LineHorizontal"
-          value="{{ varTrackbar_LineHorizontal }}" onchange="send()">
+        <input type="number" min="0" max="3000" name="number_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Min" 
+          value="{{ varhtml_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Min }}"
+          onchange="send()">
       </div>
     </div>
 
     <div class=inputTrack>
       <div class="labelRange">
         <span class="bound_label_Left">0</span>
-        <span> Tamanho linha vertical </span>
-        <span class="bound_label_Right">1000</span>
+        <span>Emen. Tam. Max. LV </span>
+        <span class="bound_label_Right">3000</span>
       </div>
       <div class="valueRange">
-        <h4>{{ varTrackbar_LineVertical }}</h4>
-        <input type="range" min="0" max="1000" name="trackbar_LineVertical"
-          value="{{ varTrackbar_LineVertical }}" onchange="send()">
+        <h4>{{ varhtml_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Max }}</h4>
+        <input type="range" min="0" max="3000" name="trackbar_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Max" 
+          value="{{ varhtml_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Max }}"
+          onchange="send()">
       </div>
       <div class="valueRange">
-        <input type="number" min="0" max="1000" name="number_LineVertical"
-          value="{{ varTrackbar_LineVertical }}" onchange="send()">
+        <input type="number" min="0" max="3000" name="number_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Max" 
+          value="{{ varhtml_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Max }}"
+          onchange="send()">
       </div>
     </div>
 
     <div class=inputTrack>
       <div class="labelRange">
         <span class="bound_label_Left">0</span>
-        <span> Range tamanho linha </span>
+        <span>Emen. Tam. Min. LH </span>
+        <span class="bound_label_Right">3000</span>
+      </div>
+      <div class="valueRange">
+        <h4>{{ varhtml_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Min }}</h4>
+        <input type="range" min="0" max="3000" name="trackbar_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Min" 
+          value="{{ varhtml_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Min }}"
+          onchange="send()">
+      </div>
+      <div class="valueRange">
+        <input type="number" min="0" max="3000" name="number_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Min" 
+          value="{{ varhtml_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Min }}"
+          onchange="send()">
+      </div>
+    </div>
+
+    <div class=inputTrack>
+      <div class="labelRange">
+        <span class="bound_label_Left">0</span>
+        <span>Emen. Tam. Max. LH </span>
+        <span class="bound_label_Right">3000</span>
+      </div>
+      <div class="valueRange">
+        <h4>{{ varhtml_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Max }}</h4>
+        <input type="range" min="0" max="3000" name="trackbar_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Max" 
+          value="{{ varhtml_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Max }}"
+          onchange="send()">
+      </div>
+      <div class="valueRange">
+        <input type="number" min="0" max="3000" name="number_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Max" 
+          value="{{ varhtml_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Max }}"
+          onchange="send()">
+      </div>
+    </div>
+  </div>
+
+  <div class="inputsTrack">
+    <div class=inputTrack>
+      <div class="labelRange">
+        <span class="bound_label_Left">0</span>
+        <span> Tam. Min </span>
+        <span class="bound_label_Right">3000</span>
+      </div>
+      <div class="valueRange">
+        <h4>{{ varhtml_parametersFilter_FoundObjectSizeFilter_Min }}</h4>
+        <input type="range" min="0" max="3000" name="trackbar_parametersFilter_FoundObjectSizeFilter_Min" 
+          value="{{ varhtml_parametersFilter_FoundObjectSizeFilter_Min }}"
+          onchange="send()">
+      </div>
+      <div class="valueRange">
+        <input type="number" min="0" max="3000" name="number_parametersFilter_FoundObjectSizeFilter_Min" 
+          value="{{ varhtml_parametersFilter_FoundObjectSizeFilter_Min }}" 
+          onchange="send()">
+      </div>
+    </div>
+
+    <div class=inputTrack>
+      <div class="labelRange">
+        <span class="bound_label_Left">0</span>
+        <span> Tam. Max </span>
+        <span class="bound_label_Right">100000</span>
+      </div>
+      <div class="valueRange">
+        <h4>{{ varhtml_parametersFilter_FoundObjectSizeFilter_Max }}</h4>
+        <input type="range" min="0" max="100000" name="trackbar_parametersFilter_FoundObjectSizeFilter_Max" 
+          value="{{ varhtml_parametersFilter_FoundObjectSizeFilter_Max }}"
+          onchange="send()">
+      </div>
+      <div class="valueRange">
+        <input type="number" min="0" max="100000" name="number_parametersFilter_FoundObjectSizeFilter_Max" 
+          value="{{ varhtml_parametersFilter_FoundObjectSizeFilter_Max }}"
+          onchange="send()">
+      </div>
+    </div>
+
+    <div class=inputTrack>
+      <div class="labelRange">
+        <span class="bound_label_Left">0</span>
+        <span> Tam. Min. linha Vert. </span>
         <span class="bound_label_Right">1000</span>
       </div>
       <div class="valueRange">
-        <h4>{{ varTrackbar_LineRange }}</h4>
-        <input type="range" min="0" max="1000" name="trackbar_LineRange"
-          value="{{ varTrackbar_LineRange }}" onchange="send()">
+        <h4>{{ varhtml_parametersFilter_VerticalLineSizeFilterOfFoundObject_Min }}</h4>
+        <input type="range" min="0" max="1000" name="trackbar_parametersFilter_VerticalLineSizeFilterOfFoundObject_Min"
+          value="{{ varhtml_parametersFilter_VerticalLineSizeFilterOfFoundObject_Min }}" 
+          onchange="send()">
       </div>
       <div class="valueRange">
-        <input type="number" min="0" max="1000" name="number_LineRange"
-          value="{{ varTrackbar_LineRange }}" onchange="send()">
+        <input type="number" min="0" max="1000" name="number_parametersFilter_VerticalLineSizeFilterOfFoundObject_Min"
+          value="{{ varhtml_parametersFilter_VerticalLineSizeFilterOfFoundObject_Min }}" 
+          onchange="send()">
+      </div>
+    </div>
+
+    <div class=inputTrack>
+      <div class="labelRange">
+        <span class="bound_label_Left">0</span>
+        <span> Tam. Max. linha Vert. </span>
+        <span class="bound_label_Right">1000</span>
+      </div>
+      <div class="valueRange">
+        <h4>{{ varhtml_parametersFilter_VerticalLineSizeFilterOfFoundObject_Max }}</h4>
+        <input type="range" min="0" max="1000" name="trackbar_parametersFilter_VerticalLineSizeFilterOfFoundObject_Max"
+          value="{{ varhtml_parametersFilter_VerticalLineSizeFilterOfFoundObject_Max }}" 
+          onchange="send()">
+      </div>
+      <div class="valueRange">
+        <input type="number" min="0" max="1000" name="number_parametersFilter_VerticalLineSizeFilterOfFoundObject_Max"
+          value="{{ varhtml_parametersFilter_VerticalLineSizeFilterOfFoundObject_Max }}" 
+          onchange="send()">
+      </div>
+    </div>
+
+    <div class=inputTrack>
+      <div class="labelRange">
+        <span class="bound_label_Left">0</span>
+        <span> Tam. Min. linha Hor. </span>
+        <span class="bound_label_Right">1000</span>
+      </div>
+      <div class="valueRange">
+        <h4>{{ varhtml_parametersFilter_HorizontallyLineSizeFilterOfFoundObject_Min }}</h4>
+        <input type="range" min="0" max="1000" name="trackbar_parametersFilter_HorizontallyLineSizeFilterOfFoundObject_Min"
+          value="{{ varhtml_parametersFilter_HorizontallyLineSizeFilterOfFoundObject_Min }}" 
+          onchange="send()">
+      </div>
+      <div class="valueRange">
+        <input type="number" min="0" max="1000" name="number_parametersFilter_HorizontallyLineSizeFilterOfFoundObject_Min"
+          value="{{ varhtml_parametersFilter_HorizontallyLineSizeFilterOfFoundObject_Min }}" 
+          onchange="send()">
+      </div>
+    </div>
+
+    <div class=inputTrack>
+      <div class="labelRange">
+        <span class="bound_label_Left">0</span>
+        <span> Tam. Max. linha Hor. </span>
+        <span class="bound_label_Right">1000</span>
+      </div>
+      <div class="valueRange">
+        <h4>{{ varhtml_parametersFilter_HorizontallyLineSizeFilterOfFoundObject_Max }}</h4>
+        <input type="range" min="0" max="1000" name="trackbar_parametersFilter_HorizontallyLineSizeFilterOfFoundObject_Max"
+          value="{{ varhtml_parametersFilter_HorizontallyLineSizeFilterOfFoundObject_Max }}" 
+          onchange="send()">
+      </div>
+      <div class="valueRange">
+        <input type="number" min="0" max="1000" name="number_parametersFilter_HorizontallyLineSizeFilterOfFoundObject_Max"
+          value="{{ varhtml_parametersFilter_HorizontallyLineSizeFilterOfFoundObject_Max }}" 
+          onchange="send()">
       </div>
     </div>
 
@@ -274,13 +354,13 @@
         <span class="bound_label_Right">1000.0</span>
       </div>
       <div class="valueRange">
-        <h4>{{ varTrackbar_ConstResolutionPixelMm_X }}</h4>
+        <h4>{{ varhtml_ConstResolutionPixelMm_X }}</h4>
         <input type="range" min="0,0" max="1000,0" name="trackbar_ResolutionPixMm_X"
-          value="{{ varTrackbar_ConstResolutionPixelMm_X }}" onchange="send()">
+          value="{{ varhtml_ConstResolutionPixelMm_X }}" onchange="send()">
       </div>
       <div class="valueRange">
         <input type="number" min="0,0" max="1000,0" name="number_ResolutionPixMm_X"
-          value="{{ varTrackbar_ConstResolutionPixelMm_X }}" onchange="send()">
+          value="{{ varhtml_ConstResolutionPixelMm_X }}" onchange="send()">
       </div>
     </div>
 
@@ -291,22 +371,21 @@
         <span class="bound_label_Right">1000.0</span>
       </div>
       <div class="valueRange">
-        <h4>{{ varTrackbar_ConstResolutionPixelMm_Y }}</h4>
+        <h4>{{ varhtml_ConstResolutionPixelMm_Y }}</h4>
         <input type="range" min="0,0" max="1000,0" name="trackbar_ResolutionPixMm_Y"
-          value="{{ varTrackbar_ConstResolutionPixelMm_Y }}" onchange="send()">
+          value="{{ varhtml_ConstResolutionPixelMm_Y }}" onchange="send()">
       </div>
       <div class="valueRange">
         <input type="number" min="0,0" max="1000,0" name="number_ResolutionPixMm_Y"
-          value="{{ varTrackbar_ConstResolutionPixelMm_Y }}" onchange="send()">
+          value="{{ varhtml_ConstResolutionPixelMm_Y }}" onchange="send()">
       </div>
     </div>
-
   </div>
 </form>
 
 <form id="formSalvar" method="post">
   <div id="btSalvar-container">
-    <input name=parameters_name type="text" value="{{ varname }}" onchange="sendName()"/>
+    <input name=parameters_name type="text" value="{{ varhtml_name }}" onchange="sendName()"/>
     <button name="btSalvar" type="button" onclick="save()">SALVAR</button>
     <div id="parametro-container">
   </div>
