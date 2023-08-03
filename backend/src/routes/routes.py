@@ -175,7 +175,6 @@ def init_app(app):
     def save_filters():
         request_data = request.get_json()
         name = request_data['name']
-        print(name)
         return "ok"
     
     
@@ -189,7 +188,6 @@ def init_app(app):
     def change_current_filters():
         request_data = request.get_json()
         id = request_data['id']
-        print(id)
         return "ok"
     
 
@@ -200,7 +198,6 @@ def init_app(app):
     @app.route("/set_areas", methods=["POST"])
     def create_areas():
         request_data = request.get_json()
-        print(request_data)
         global_variable.var_parametersArea_Area01_X1 = request_data["area01_X1"]
         global_variable.var_parametersArea_Area01_Y1 = request_data["area01_Y1"]
         global_variable.var_parametersArea_Area01_X2 = request_data["area01_X2"]
@@ -255,7 +252,6 @@ def init_app(app):
     def change_current_areas():
         request_data = request.get_json()
         id = request_data['id']
-        print(id)
         return "ok"
     
 
@@ -263,7 +259,6 @@ def init_app(app):
     def save_areas():
         request_data = request.get_json()
         name = request_data['name']
-        print(name)
         return "ok"
     
     
