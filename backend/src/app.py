@@ -1,6 +1,7 @@
 # python .\app.py -i localhost -o 8000\
 
 from flask import Flask
+from flask_cors import CORS
 
 from controllers.visionAnalysis.detectObject import detect_motion
 
@@ -15,6 +16,7 @@ import time
 import cv2
 
 app = Flask(__name__)
+CORS(app)
 
 time.sleep(2.0)
 
