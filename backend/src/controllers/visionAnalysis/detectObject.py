@@ -2,6 +2,7 @@ import cv2
 import imutils
 import math
 import numpy as np
+import controllers.varGlobal.global_areas_props as area_global_variable
 import controllers.varGlobal.adjustmentPanel
 import controllers.frames.frames
 import controllers.plc
@@ -12,7 +13,7 @@ from services.clearPixelNoise 	import clearPixelLine, clearPixelColum
 from rich.console				import Console
 from rich.table					import Table
 
-from database.db_insert_historyProductionParametersAdjustFilterImg import db_insert_historyProductionParametersAdjustFilterImg as db
+from database.filters.db_insert_historyProductionParametersAdjustFilterImg import db_insert_historyProductionParametersAdjustFilterImg as db
 
 #
 #Fonts
@@ -303,7 +304,7 @@ def detect_motion():
 
 	while(True):
 		print('Tentando conectar webcam')
-		cap = cv2.VideoCapture(0)
+		cap = cv2.VideoCapture(1)
 		time.sleep(1)
 
 		if (cap.isOpened()):
@@ -327,7 +328,13 @@ def detect_motion():
 				lower = np.array([l_h, l_s, l_v])
 				upper = np.array([u_h, u_s, u_v])
 
-				frame03 	= imutils.resize(frame03, 		width=400, height=400)
+				area_global_variable.var_size_max_img_width 	= 400
+				area_global_variable.var_size_max_img_height	= 300
+
+				frame03 	= imutils.resize(frame03, 		
+			      								width=area_global_variable.var_size_max_img_width, 
+				  								height=area_global_variable.var_size_max_img_height)
+				
 				frame03 	= cv2.erode(frame03, 
 									None, 
 									iterations = controllers.varGlobal.adjustmentPanel.var_parametersFilter_Iterations_erode)
@@ -350,6 +357,35 @@ def detect_motion():
 				frame02 = cv2.cvtColor(cutLine, cv2.COLOR_BGR2GRAY)
 				dibujar(frame01, frame02, frame03, (255,0,0)) #mask
 
+
+				# x1, y1 = 100, 100  # Coordenadas do canto superior esquerdo do retângulo
+				# x2, y2 = 300, 200  # Coordenadas do canto inferior direito do retângulo
+
+				x1 = area_global_variable.var_parametersArea_Area01_X1
+				y1 = area_global_variable.var_parametersArea_Area01_Y1
+				x2 = area_global_variable.var_parametersArea_Area01_X2
+				y2 = area_global_variable.var_parametersArea_Area01_Y2
+
+				cor_retangulo = (0, 255, 0)  # Cor do retângulo (verde no formato BGR)
+				espessura_retangulo = 2  # Espessura da linha do retângulo
+				cv2.rectangle(frame03, (x1, y1), (x2, y2), cor_retangulo, espessura_retangulo)
+
+				# Definir a cor do retângulo com transparência
+				cor_retangulo = (0, 255, 255)  # Cor amarela no formato BGR
+
+
+				# x1, y1 = 300, 200  # Coordenadas do canto superior esquerdo do retângulo
+				# x2, y2 = 500, 500  # Coordenadas do canto inferior direito do retângulo
+				# Definir a intensidade de transparência (valor entre 0 e 1)
+
+				
+				transparencia = 0.5
+
+				# Desenhar o retângulo na imagem com transparência
+				frame03 = cv2.addWeighted(frame03, 1 - transparencia, cv2.rectangle(frame03.copy(), (x1, y1), (x2, y2), cor_retangulo, -1), transparencia, 0)
+
+				#ps.putBText(image,text,text_offset_x=20,text_offset_y=20,vspace=10,hspace=10, font_scale=1.0,background_RGB=(228,225,222),text_RGB=(1,1,1))
+				
 				controllers.frames.frames.changeState_outputVideoLayer01(frame01)
 				controllers.frames.frames.changeState_outputVideoLayer02(frame02)
 				controllers.frames.frames.changeState_outputVideoLayer03(frame03)

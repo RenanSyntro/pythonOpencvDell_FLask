@@ -1,5 +1,28 @@
 CREATE DATABASE db_OpenCvRoboXYZDell DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 
+CREATE TABLE IF NOT EXISTS `AreasOfOperationInTheFilter`(
+    id                                          INT NOT NULL AUTO_INCREMENT,
+    name                                        CHAR(50),
+    Area01_X1                                   INT,
+    Area01_Y1                                   INT,
+    Area01_X2                                   INT,
+    Area01_Y2                                   INT,
+    Area02_X1                                   INT,
+    Area02_Y1                                   INT,
+    Area02_X2                                   INT,
+    Area02_Y2                                   INT,
+    Area03_X1                                   INT,
+    Area03_Y1                                   INT,
+    Area03_X2                                   INT,
+    Area03_Y2                                   INT,
+    Area04_X1                                   INT,
+    Area04_Y1                                   INT,
+    Area04_X2                                   INT,
+    Area04_Y2                                   INT,
+    
+    PRIMARY KEY(id)
+)
+
 CREATE TABLE IF NOT EXISTS `parametersAdjustFilterImg`(
     id                                          INT NOT NULL AUTO_INCREMENT,
     name                                        CHAR(50),
@@ -20,26 +43,22 @@ CREATE TABLE IF NOT EXISTS `parametersAdjustFilterImg`(
     SpliceLineJumpWhiteVer_JumpSize_Min         INT,
     SpliceLineJumpWhiteVer_JumpSize_Max         INT,
 
-    SpliceLineJumpWhiteVer_JumpSize_Field_X     INT,
-    SpliceLineJumpWhiteVer_JumpSize_Field_Y     INT,
+    SpliceLineJumpWhiteVer_IdAreasOfOperationInTheFilter     INT,
 
     SpliceLineJumpWhiteHor_JumpSize_Min         INT,
     SpliceLineJumpWhiteHor_JumpSize_Max         INT,
 
-    SpliceLineJumpWhiteHor_JumpSize_Field_X     INT,
-    SpliceLineJumpWhiteHor_JumpSize_Field_Y     INT,
+    SpliceLineJumpWhiteHor_IdAreasOfOperationInTheFilter     INT,
 
     SpliceLineJumpBlackVer_JumpSize_Min         INT,
     SpliceLineJumpBlackVer_JumpSize_Max         INT,
 
-    SpliceLineJumpBlackVer_JumpSize_Field_X     INT,
-    SpliceLineJumpBlackVer_JumpSize_Field_Y     INT,
+    SpliceLineJumpBlackVer_IdAreasOfOperationInTheFilter     INT,
 
     SpliceLineJumpBlackHor_JumpSize_Min         INT,
     SpliceLineJumpBlackHor_JumpSize_Max         INT,
 
-    SpliceLineJumpBlackHor_JumpSize_Field_X     INT,
-    SpliceLineJumpBlackHor_JumpSize_Field_Y     INT,
+    SpliceLineJumpBlackHor_IdAreasOfOperationInTheFilter     INT,
 
     FoundObjectSizeFilter_Min                   INT,
     FoundObjectSizeFilter_Max                   INT,
@@ -82,13 +101,13 @@ VALUES (
         0,0, 
         0,0,
         0,0,
+        0,
         0,0,
+        0,
         0,0,
+        0,
         0,0,
-        0,0,
-        0,0,
-        0,0,
-        0,0,
+        0,
         0,0,
         0,0,
         0,0,
@@ -117,26 +136,22 @@ INSERT INTO parametersAdjustFilterImg (
     SpliceLineJumpWhiteVer_JumpSize_Min,
     SpliceLineJumpWhiteVer_JumpSize_Max,
 
-    SpliceLineJumpWhiteVer_JumpSize_Field_X,
-    SpliceLineJumpWhiteVer_JumpSize_Field_Y,
+    SpliceLineJumpWhiteVer_IdAreasOfOperationInTheFilter,
 
     SpliceLineJumpWhiteHor_JumpSize_Min,
     SpliceLineJumpWhiteHor_JumpSize_Max,
 
-    SpliceLineJumpWhiteHor_JumpSize_Field_X,
-    SpliceLineJumpWhiteHor_JumpSize_Field_Y,
+    SpliceLineJumpWhiteHor_IdAreasOfOperationInTheFilter,
 
     SpliceLineJumpBlackVer_JumpSize_Min,
     SpliceLineJumpBlackVer_JumpSize_Max,
 
-    SpliceLineJumpBlackVer_JumpSize_Field_X,
-    SpliceLineJumpBlackVer_JumpSize_Field_Y,
+    SpliceLineJumpBlackVer_IdAreasOfOperationInTheFilter,
 
     SpliceLineJumpBlackHor_JumpSize_Min,
     SpliceLineJumpBlackHor_JumpSize_Max,
 
-    SpliceLineJumpBlackHor_JumpSize_Field_X,
-    SpliceLineJumpBlackHor_JumpSize_Field_Y,
+    SpliceLineJumpBlackHor_IdAreasOfOperationInTheFilter,
 
     FoundObjectSizeFilter_Min,
     FoundObjectSizeFilter_Max,
@@ -189,24 +204,20 @@ INSERT INTO parametersAdjustFilterImg (
     0,
 
     0,
+
+    0,
+    0,
+
     0,
 
     0,
     0,
 
     0,
-    0,
 
     0,
     0,
 
-    0,
-    0,
-
-    0,
-    0,
-
-    0,
     0,
 
     0,

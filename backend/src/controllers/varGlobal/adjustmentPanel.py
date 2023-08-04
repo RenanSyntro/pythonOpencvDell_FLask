@@ -35,29 +35,26 @@ var_parametersFilter_Iterations_dilate	                                    = 0
 var_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Min     = 0
 var_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Max     = 0
 #Area
-var_parametersFilter_SpliceLineJumpWhiteVer_JumpSize_Field_X                = 0
-var_parametersFilter_SpliceLineJumpWhiteVer_JumpSize_Field_Y                = 0
+var_parametersFilter_SpliceLineJumpWhiteVer_IdAreasOfOperationInTheFilter   = 0
 
 #Horizontally   - White
 var_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Min   = 0
 var_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Max   = 0
 #Area
-var_parametersFilter_SpliceLineJumpWhiteHor_JumpSize_Field_X                = 0
-var_parametersFilter_SpliceLineJumpWhiteHor_JumpSize_Field_Y                = 0
+var_parametersFilter_SpliceLineJumpWhiteHor_IdAreasOfOperationInTheFilter   = 0
 
 #Vertically     - Black
 var_parametersFilter_SpliceLineJumpingBlackColorVertically_JumpSize_Min     = 0
 var_parametersFilter_SpliceLineJumpingBlackColorVertically_JumpSize_Max     = 0
 #Area
-var_parametersFilter_SpliceLineJumpBlackVer_JumpSize_Field_X                = 0
-var_parametersFilter_SpliceLineJumpBlackVer_JumpSize_Field_Y                = 0 
+var_parametersFilter_SpliceLineJumpBlackVer_IdAreasOfOperationInTheFilter   = 0
 
 #Horizontally   - Black
 var_parametersFilter_SpliceLineJumpingBlackColorHorizontally_JumpSize_Min   = 0
 var_parametersFilter_SpliceLineJumpingBlackColorHorizontally_JumpSize_Max   = 0
 #Area
-var_parametersFilter_SpliceLineJumpBlackHor_JumpSize_Field_X                = 0
-var_parametersFilter_SpliceLineJumpBlackHor_JumpSize_Field_Y                = 0
+var_parametersFilter_SpliceLineJumpBlackHor_IdAreasOfOperationInTheFilter   = 0
+
 #
 #Filter Object Size 
 #
@@ -80,4 +77,4 @@ varTrackbar_ConstResolutionPixelMm_Y                                        = 0.
 #Label Web Name Recipe
 #
 labelWeb_RecipeName                                                         = ""
-
+ 

@@ -27,8 +27,8 @@ class db_insert_historyProductionParametersAdjustFilterImg():
         #
         #Iterations
         #
-        parameter07 = controllers.varGlobal.adjustmentPanel.var_parametersFilter_varTrackbar_iterations_erode
-        parameter08 = controllers.varGlobal.adjustmentPanel.var_parametersFilter_varTrackbar_iterations_dilate
+        parameter07 = controllers.varGlobal.adjustmentPanel.var_parametersFilter_Iterations_erode
+        parameter08 = controllers.varGlobal.adjustmentPanel.var_parametersFilter_Iterations_dilate
 
         #
         #Seam according to color

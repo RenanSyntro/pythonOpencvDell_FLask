@@ -39,8 +39,8 @@ def init_app(app):
         value = request_data["value"]
 
         if (value != None):
-           if (controllers.varGlobal.adjustmentPanel.var_parametersFilter_varTrackbar_iterations_erode            != int(value)):
-                    controllers.varGlobal.adjustmentPanel.var_parametersFilter_varTrackbar_iterations_erode       = int(value)
+           if (controllers.varGlobal.adjustmentPanel.var_parametersFilter_Iterations_erode            != int(value)):
+                    controllers.varGlobal.adjustmentPanel.var_parametersFilter_Iterations_erode       = int(value)
         return 'ok'
     
     #Iterações dilatam
@@ -50,8 +50,8 @@ def init_app(app):
         value = request_data["value"]
 
         if (value != None):
-           if (controllers.varGlobal.adjustmentPanel.var_parametersFilter_varTrackbar_iterations_dilate           != int(value)):
-                    controllers.varGlobal.adjustmentPanel.var_parametersFilter_varTrackbar_iterations_dilate      = int(value)
+           if (controllers.varGlobal.adjustmentPanel.var_parametersFilter_Iterations_dilate           != int(value)):
+                    controllers.varGlobal.adjustmentPanel.var_parametersFilter_Iterations_dilate      = int(value)
         return 'ok'
 
     #@app.route("/tamminmaxlvlh", methods=["POST"])

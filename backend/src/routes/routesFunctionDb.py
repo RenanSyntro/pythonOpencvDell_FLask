@@ -3,19 +3,19 @@ import controllers.varGlobal.adjustmentPanel
 from flask                                              import Response
 from flask                                              import render_template, request
 
-from database.db_DeleteFilter                           import db_DeleteFilter
-from database.db_InsertRow_parametersAdjustFilterImg    import Insert_parametersAdjustFilterImg
-from database.db_SelectFilterByName                     import db_SelectFilterByName
-from database.db_SelectFiltersName                      import db_SelectFiltersName
-from database.db_SelectRow_nameParameters               import SelectRow_NameParametersAdjustFilterImg
-from database.db_SelectRow_SeachForID                   import selectRow_SearchForID
+from database.filters.db_DeleteFilter                           import db_DeleteFilter
+from database.filters.db_InsertRow_parametersAdjustFilterImg    import Insert_parametersAdjustFilterImg
+from database.filters.db_SelectFilterByName                     import db_SelectFilterByName
+from database.filters.db_SelectFiltersName                      import db_SelectFiltersName
+from database.filters.db_SelectRow_nameParameters               import SelectRow_NameParametersAdjustFilterImg
+from database.filters.db_SelectRow_SeachForID                   import selectRow_SearchForID
 
 def init_app(app):
     @app.route("/save-filter", methods=["POST"])
     def saveFilter():
         request_data = request.get_json()
         fileName = request_data['fileName']
-        controllers.adjustmentPanel.varname = fileName
+        controllers.varGlobal.adjustmentPanel.var_name = fileName
         Insert_parametersAdjustFilterImg.salvar()
         return 'ok'
     
@@ -61,7 +61,7 @@ def init_app(app):
 
     @app.route("/current_filter", methods=["GET"])
     def current_filter():
-        current_file_name = controllers.adjustmentPanel.varname
+        current_file_name = controllers.varGlobal.adjustmentPanel.var_name
         data = db_SelectFilterByName.Select(current_file_name)
         if data == None:
             return ''
