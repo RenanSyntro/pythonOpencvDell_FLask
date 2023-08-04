@@ -1,16 +1,18 @@
 
-from flask                                              import render_template, request
-from flask_cors                                         import CORS
-from database.filters.db_SelectRow_nameParameters       import SelectRow_NameParametersAdjustFilterImg
-from database.filters.db_SelectRow_SeachForID           import selectRow_SearchForID
-from database.areas.db_get_areas_name                   import GetAreasName
-from database.areas.db_save_areas                       import Save_areas
-from database.areas.db_get_areas_by_id                  import GetAreasByID
+from flask                                          import render_template, request
+from flask_cors                                     import CORS
+from database.filters.db_SelectRow_nameParameters   import SelectRow_NameParametersAdjustFilterImg
+from database.filters.db_SelectRow_SeachForID       import selectRow_SearchForID
+from database.areas.db_get_areas_name               import GetAreasName
+from database.areas.db_save_areas                   import Save_areas
+from database.areas.db_get_areas_by_id              import GetAreasByID
+from database.areas.db_delete_area                  import db_Delete
 import controllers.frames.generateFrame
 import controllers.frames.frames
 import controllers.varGlobal.adjustmentPanel 
-import controllers.varGlobal.adjustmentPanel            as global_variable 
-import controllers.varGlobal.global_areas_props         as area_global_variable
+import controllers.varGlobal.adjustmentPanel         as global_variable 
+import controllers.varGlobal.global_areas_props      as area_global_variable
+import controllers.varGlobal.global_areas_props      as area_global_variable
 
 
 def init_app(app):
@@ -186,7 +188,6 @@ def init_app(app):
     
     @app.route("/delete_filters", methods=["POST"])
     def delete_filters():
-        print("Pegar id da variavel global")
         return "ok"
     
 
@@ -275,7 +276,7 @@ def init_app(app):
     
     @app.route("/delete_areas", methods=["POST"])
     def delete_areas():
-        print("Pegar id da variavel global")
+        db_Delete.Delete()
         return "ok"
         
 
