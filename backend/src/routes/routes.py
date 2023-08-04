@@ -258,12 +258,11 @@ def init_app(app):
             return arrayFilters
         return []
 
-
     @app.route("/change_current_areas", methods=["POST"])
     def change_current_areas():
         request_data = request.get_json()
         GetAreasByID.Select(request_data['id'])
-        return "ok"
+
     
 
     @app.route("/save_areas", methods=["POST"])
@@ -271,6 +270,7 @@ def init_app(app):
         request_data = request.get_json()
         area_global_variable.var_parametersArea_name = request_data['name']
         Save_areas.save()
+
         return "ok"
     
     
