@@ -12,7 +12,6 @@ import controllers.frames.frames
 import controllers.varGlobal.adjustmentPanel 
 import controllers.varGlobal.adjustmentPanel         as global_variable 
 import controllers.varGlobal.global_areas_props      as area_global_variable
-import controllers.varGlobal.global_areas_props      as area_global_variable
 
 
 def init_app(app):
@@ -198,31 +197,33 @@ def init_app(app):
         return "ok"
     
 
-
-
     ############### API DAS AREAS ###############
     ###############################################
     @app.route("/set_areas", methods=["POST"])
     def create_areas():
         request_data = request.get_json()
-        area_global_variable.var_parametersArea_Area01_X1 = request_data["area01_X1"]
-        area_global_variable.var_parametersArea_Area01_Y1 = request_data["area01_Y1"]
-        area_global_variable.var_parametersArea_Area01_X2 = request_data["area01_X2"]
-        area_global_variable.var_parametersArea_Area01_Y2 = request_data["area01_Y2"]
-        area_global_variable.var_parametersArea_Area02_X1 = request_data["area02_X1"]
-        area_global_variable.var_parametersArea_Area02_Y1 = request_data["area02_Y1"]
-        area_global_variable.var_parametersArea_Area02_X2 = request_data["area02_X2"]
-        area_global_variable.var_parametersArea_Area02_Y2 = request_data["area02_Y2"]
-        area_global_variable.var_parametersArea_Area03_X1 = request_data["area03_X1"]
-        area_global_variable.var_parametersArea_Area03_Y1 = request_data["area03_Y1"]
-        area_global_variable.var_parametersArea_Area03_X2 = request_data["area03_X2"]
-        area_global_variable.var_parametersArea_Area03_Y2 = request_data["area03_Y2"]
-        area_global_variable.var_parametersArea_Area04_X1 = request_data["area04_X1"]
-        area_global_variable.var_parametersArea_Area04_Y1 = request_data["area04_Y1"]
-        area_global_variable.var_parametersArea_Area04_X2 = request_data["area04_X2"]
-        area_global_variable.var_parametersArea_Area04_Y2 = request_data["area04_Y2"]
-        return 'ok'
+        attr1 = request_data['attr1']
+        attr2 = request_data['attr2']
+        value = request_data['value']
+        print("SEI LA:::", attr1, attr2, value[0])
 
+        # area_global_variable.var_parametersArea_Area01_X1 = request_data["area01_X1"]
+        # area_global_variable.var_parametersArea_Area01_Y1 = request_data["area01_Y1"]
+        # area_global_variable.var_parametersArea_Area01_X2 = request_data["area01_X2"]
+        # area_global_variable.var_parametersArea_Area01_Y2 = request_data["area01_Y2"]
+        # area_global_variable.var_parametersArea_Area02_X1 = request_data["area02_X1"]
+        # area_global_variable.var_parametersArea_Area02_Y1 = request_data["area02_Y1"]
+        # area_global_variable.var_parametersArea_Area02_X2 = request_data["area02_X2"]
+        # area_global_variable.var_parametersArea_Area02_Y2 = request_data["area02_Y2"]
+        # area_global_variable.var_parametersArea_Area03_X1 = request_data["area03_X1"]
+        # area_global_variable.var_parametersArea_Area03_Y1 = request_data["area03_Y1"]
+        # area_global_variable.var_parametersArea_Area03_X2 = request_data["area03_X2"]
+        # area_global_variable.var_parametersArea_Area03_Y2 = request_data["area03_Y2"]
+        # area_global_variable.var_parametersArea_Area04_X1 = request_data["area04_X1"]
+        # area_global_variable.var_parametersArea_Area04_Y1 = request_data["area04_Y1"]
+        # area_global_variable.var_parametersArea_Area04_X2 = request_data["area04_X2"]
+        # area_global_variable.var_parametersArea_Area04_Y2 = request_data["area04_Y2"]
+        return 'ok'
 
     @app.route("/get_current_areas_params", methods=["GET"])
     def get_current_areas_params():
@@ -247,7 +248,6 @@ def init_app(app):
             "area04_Y2":area_global_variable.var_parametersArea_Area04_Y2,
             }
     
-
     @app.route("/get_areas", methods=["GET"])
     def get_areas():
         areas_name = GetAreasName.Select()
@@ -261,9 +261,9 @@ def init_app(app):
     @app.route("/change_current_areas", methods=["POST"])
     def change_current_areas():
         request_data = request.get_json()
-        GetAreasByID.Select(request_data['id'])
-
-    
+        area_global_variable.var_parametersArea_id = request_data['id']
+        GetAreasByID.Select()
+        return "ok"
 
     @app.route("/save_areas", methods=["POST"])
     def save_areas():
@@ -272,7 +272,6 @@ def init_app(app):
         Save_areas.save()
 
         return "ok"
-    
     
     @app.route("/delete_areas", methods=["POST"])
     def delete_areas():

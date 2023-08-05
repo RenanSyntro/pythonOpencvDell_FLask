@@ -4,9 +4,11 @@ import controllers.varGlobal.global_areas_props as global_variable
 
 class db_Delete():
     def Delete():
+        id = global_variable.var_parametersArea_id
         with mysql.cursor() as cur:
-            if(global_variable.var_parametersArea_id is None or global_variable.var_parametersArea_id <= 0):
-                return None
+            if( id is None or id <= 0):
+                 return "ok"
+            
             cur.execute("DELETE FROM areasofoperationinthefilter WHERE id=%s", global_variable.var_parametersArea_id)
            
             global_variable.var_parametersArea_id = 0

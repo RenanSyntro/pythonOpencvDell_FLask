@@ -329,21 +329,12 @@ def detect_motion():
 				lower = np.array([l_h, l_s, l_v])
 				upper = np.array([u_h, u_s, u_v])
 
-<<<<<<< HEAD
 				area_global_variable.var_size_max_img_width 	= 400
 				area_global_variable.var_size_max_img_height	= 300
 
 				frame03 	= imutils.resize(frame03, 		
 			      								width=area_global_variable.var_size_max_img_width, 
 				  								height=area_global_variable.var_size_max_img_height)
-=======
-				global_variable.var_size_max_img_width 	= 400
-				global_variable.var_size_max_img_height	= 300
-
-				frame03 	= imutils.resize(frame03, 		
-			      								width=global_variable.var_size_max_img_width, 
-				  								height=global_variable.var_size_max_img_height)
->>>>>>> dbab04ccf5879a83789e312976d0d97901ff1af7
 				
 				frame03 	= cv2.erode(frame03, 
 									None, 
@@ -371,17 +362,11 @@ def detect_motion():
 				# x1, y1 = 100, 100  # Coordenadas do canto superior esquerdo do retângulo
 				# x2, y2 = 300, 200  # Coordenadas do canto inferior direito do retângulo
 
-<<<<<<< HEAD
 				x1 = area_global_variable.var_parametersArea_Area01_X1
 				y1 = area_global_variable.var_parametersArea_Area01_Y1
 				x2 = area_global_variable.var_parametersArea_Area01_X2
 				y2 = area_global_variable.var_parametersArea_Area01_Y2
-=======
-				x1 = global_variable.var_parametersArea_Area01_X1
-				y1 = global_variable.var_parametersArea_Area01_Y1
-				x2 = global_variable.var_parametersArea_Area01_X2
-				y2 = global_variable.var_parametersArea_Area01_Y2
->>>>>>> dbab04ccf5879a83789e312976d0d97901ff1af7
+
 
 				cor_retangulo = (0, 255, 0)  # Cor do retângulo (verde no formato BGR)
 				espessura_retangulo = 2  # Espessura da linha do retângulo
