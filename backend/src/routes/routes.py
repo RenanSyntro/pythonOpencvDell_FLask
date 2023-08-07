@@ -1,7 +1,9 @@
 
 from flask                                          import render_template, request
 from flask_cors                                     import CORS
+from database.filters.db_DeleteFilter import db_DeleteFilter
 from database.filters.db_InsertRow_parametersAdjustFilterImg import Insert_parametersAdjustFilterImg
+from database.filters.db_SelectFilterByID import db_SelectFilterByID
 from database.filters.db_SelectFiltersName import db_SelectFiltersName
 from database.filters.db_SelectRow_nameParameters   import SelectRow_NameParametersAdjustFilterImg
 from database.filters.db_SelectRow_SeachForID       import selectRow_SearchForID
@@ -175,10 +177,10 @@ def init_app(app):
 
     @app.route("/get_filters", methods=["GET"])
     def get_filters():
-        filters_name = db_SelectFiltersName.Select()
-        if len(filters_name) > 0:
+        filters = db_SelectFiltersName.Select()
+        if len(filters) > 0:
             arrayFilters = []
-            for i in list(filters_name):
+            for i in list(filters):
                 arrayFilters.append({"id":i[0], "name":i[1]})
             return arrayFilters
         return []
@@ -197,6 +199,7 @@ def init_app(app):
     
     @app.route("/delete_filters", methods=["POST"])
     def delete_filters():
+        db_DeleteFilter.Delete()
         return "ok"
     
 
@@ -204,8 +207,49 @@ def init_app(app):
     def change_current_filters():
         request_data = request.get_json()
         id = request_data['id']
+
+        if id is None or id < 1:
+            return "id is required"
+        
+        db_SelectFilterByID.Select(id)
         return "ok"
     
+
+    @app.route("/get_current_filter_params", methods=["GET"])
+    def get_current_filter_params():
+        return {"name": global_variable.var_name,
+                "selectFilterColor_Red_Min": global_variable.var_parametersFilter_selectFilterColor_Red_Min,
+                "selectFilterColor_Red_Max": global_variable.var_parametersFilter_selectFilterColor_Red_Max,
+                "selectFilterColor_Green_Min": global_variable.var_parametersFilter_selectFilterColor_Green_Min,
+                "var_parametersFilter_selectFilterColor_Green_Max": global_variable.var_parametersFilter_selectFilterColor_Green_Max			                ,
+                "selectFilterColor_Blue_Min": global_variable.var_parametersFilter_selectFilterColor_Blue_Min			                    ,
+                "selectFilterColor_Blue_Max": global_variable.var_parametersFilter_selectFilterColor_Blue_Max  			                ,
+                "DefinedAreaForFilter_init_X": global_variable.var_parametersFilter_DefinedAreaForFilter_init_X                            ,
+                "DefinedAreaForFilter_init_Y": global_variable.var_parametersFilter_DefinedAreaForFilter_init_Y                            ,
+                "Iterations_erode": global_variable.var_parametersFilter_Iterations_erode	                                    ,
+                "Iterations_dilate": global_variable.var_parametersFilter_Iterations_dilate	                                    ,
+                "SpliceLineJumpingWhiteColorVertically_JumpSize_Min": global_variable.var_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Min     ,
+                "SpliceLineJumpingWhiteColorVertically_JumpSize_Max": global_variable.var_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Max     ,
+                "SpliceLineJumpWhiteVer_IdAreasOfOperationInTheFilter": global_variable.var_parametersFilter_SpliceLineJumpWhiteVer_IdAreasOfOperationInTheFilter   ,
+                "SpliceLineJumpingWhiteColorHorizontally_JumpSize_Min": global_variable.var_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Min   ,
+                "SpliceLineJumpingWhiteColorHorizontally_JumpSize_Max": global_variable.var_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Max   ,
+                "SpliceLineJumpWhiteHor_IdAreasOfOperationInTheFilter": global_variable.var_parametersFilter_SpliceLineJumpWhiteHor_IdAreasOfOperationInTheFilter   ,
+                "SpliceLineJumpingBlackColorVertically_JumpSize_Min": global_variable.var_parametersFilter_SpliceLineJumpingBlackColorVertically_JumpSize_Min     ,
+                "SpliceLineJumpingBlackColorVertically_JumpSize_Max": global_variable.var_parametersFilter_SpliceLineJumpingBlackColorVertically_JumpSize_Max     ,
+                "SpliceLineJumpBlackVer_IdAreasOfOperationInTheFilter": global_variable.var_parametersFilter_SpliceLineJumpBlackVer_IdAreasOfOperationInTheFilter   ,
+                "SpliceLineJumpingBlackColorHorizontally_JumpSize_Min": global_variable.var_parametersFilter_SpliceLineJumpingBlackColorHorizontally_JumpSize_Min   ,
+                "SpliceLineJumpingBlackColorHorizontally_JumpSize_Max": global_variable.var_parametersFilter_SpliceLineJumpingBlackColorHorizontally_JumpSize_Max   ,
+                "SpliceLineJumpBlackHor_IdAreasOfOperationInTheFilter": global_variable.var_parametersFilter_SpliceLineJumpBlackHor_IdAreasOfOperationInTheFilter   ,
+                "FoundObjectSizeFilter_Min": global_variable.var_parametersFilter_FoundObjectSizeFilter_Min			                    ,
+                "FoundObjectSizeFilter_Max": global_variable.var_parametersFilter_FoundObjectSizeFilter_Max		                        ,
+                "VerticalLineSizeFilterOfFoundObject_Min": global_variable.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Min	            ,
+                "VerticalLineSizeFilterOfFoundObject_Max": global_variable.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Max                ,
+                "HorizontalLineSizeFilterOfFoundObject_Min": global_variable.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Min	            ,
+                "HorizontalLineSizeFilterOfFoundObject_Max": global_variable.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Max	            ,
+                "ConstResolutionPixelMm_X": global_variable.varTrackbar_ConstResolutionPixelMm_X                                        ,
+                "ConstResolutionPixelMm_Y": global_variable.varTrackbar_ConstResolutionPixelMm_Y                                        ,
+                "labelWeb_RecipeName": global_variable.labelWeb_RecipeName}
+            
 
 
 
