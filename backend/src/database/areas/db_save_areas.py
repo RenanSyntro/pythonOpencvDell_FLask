@@ -4,10 +4,13 @@ from flask import redirect
 from db import mysql
 
 class Save_areas():
-    def save():
+    def save(name):
+        if name is None or name == "":
+            return "name is required"
+        
         with mysql.cursor() as cur:   
             cur.execute("INSERT INTO areasofoperationinthefilter VALUE (0, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-                        (global_variable.var_parametersArea_name,
+                        (name,
                          global_variable.var_parametersArea_Area01_X1,
                          global_variable.var_parametersArea_Area01_Y1,
                          global_variable.var_parametersArea_Area01_X2,
@@ -26,6 +29,5 @@ class Save_areas():
                          global_variable.var_parametersArea_Area04_Y2
                         ))
             cur.connection.commit()
-    
-
+            global_variable.var_parametersArea_name = name
         return redirect('base.html')

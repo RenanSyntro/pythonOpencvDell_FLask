@@ -5,6 +5,7 @@ class GetAreasName():
         with mysql.cursor() as cur:
             cur.execute("SELECT id,name FROM areasofoperationinthefilter")
             name_areas = cur.fetchall()
+            
         return  name_areas
   
 

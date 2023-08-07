@@ -11,11 +11,11 @@ def CheckIfRecipeNameAlreadyExists(name):
         return data
            
 class Insert_parametersAdjustFilterImg():
-    def salvar():
+    def salvar(name):
         #
         #Name
         #
-        name                    = controllers.varGlobal.adjustmentPanel.var_name
+        name                    = name
 
         #
         #Color

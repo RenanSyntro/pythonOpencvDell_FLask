@@ -1,11 +1,13 @@
 
 from flask                                          import render_template, request
 from flask_cors                                     import CORS
+from database.filters.db_InsertRow_parametersAdjustFilterImg import Insert_parametersAdjustFilterImg
+from database.filters.db_SelectFiltersName import db_SelectFiltersName
 from database.filters.db_SelectRow_nameParameters   import SelectRow_NameParametersAdjustFilterImg
 from database.filters.db_SelectRow_SeachForID       import selectRow_SearchForID
 from database.areas.db_get_areas_name               import GetAreasName
 from database.areas.db_save_areas                   import Save_areas
-from database.areas.db_get_areas_by_id              import GetAreasByID
+from database.areas.db_change_current_area              import ChangeCurrentArea
 from database.areas.db_delete_area                  import db_Delete
 import controllers.frames.generateFrame
 import controllers.frames.frames
@@ -173,15 +175,23 @@ def init_app(app):
 
     @app.route("/get_filters", methods=["GET"])
     def get_filters():
-        return [{"id":"1", "name": "Fake Filtro 1"},
-                {"id":"2", "name": "Fake Filtro 2"},
-                {"id":"3", "name": "Fake Filtro 3"},]
+        filters_name = db_SelectFiltersName.Select()
+        if len(filters_name) > 0:
+            arrayFilters = []
+            for i in list(filters_name):
+                arrayFilters.append({"id":i[0], "name":i[1]})
+            return arrayFilters
+        return []
     
 
     @app.route("/save_filters", methods=["POST"])
     def save_filters():
         request_data = request.get_json()
         name = request_data['name']
+        if name is None or name == "":
+            return "name is required"
+        
+        Insert_parametersAdjustFilterImg.salvar(name)
         return "ok"
     
     
@@ -197,57 +207,69 @@ def init_app(app):
         return "ok"
     
 
+
+
+
+
+
     ############### API DAS AREAS ###############
     ###############################################
     @app.route("/set_areas", methods=["POST"])
     def create_areas():
         request_data = request.get_json()
-        attr1 = request_data['attr1']
-        attr2 = request_data['attr2']
+        area_eixo = request_data['area_eixo']
         value = request_data['value']
-        print("SEI LA:::", attr1, attr2, value[0])
 
-        # area_global_variable.var_parametersArea_Area01_X1 = request_data["area01_X1"]
-        # area_global_variable.var_parametersArea_Area01_Y1 = request_data["area01_Y1"]
-        # area_global_variable.var_parametersArea_Area01_X2 = request_data["area01_X2"]
-        # area_global_variable.var_parametersArea_Area01_Y2 = request_data["area01_Y2"]
-        # area_global_variable.var_parametersArea_Area02_X1 = request_data["area02_X1"]
-        # area_global_variable.var_parametersArea_Area02_Y1 = request_data["area02_Y1"]
-        # area_global_variable.var_parametersArea_Area02_X2 = request_data["area02_X2"]
-        # area_global_variable.var_parametersArea_Area02_Y2 = request_data["area02_Y2"]
-        # area_global_variable.var_parametersArea_Area03_X1 = request_data["area03_X1"]
-        # area_global_variable.var_parametersArea_Area03_Y1 = request_data["area03_Y1"]
-        # area_global_variable.var_parametersArea_Area03_X2 = request_data["area03_X2"]
-        # area_global_variable.var_parametersArea_Area03_Y2 = request_data["area03_Y2"]
-        # area_global_variable.var_parametersArea_Area04_X1 = request_data["area04_X1"]
-        # area_global_variable.var_parametersArea_Area04_Y1 = request_data["area04_Y1"]
-        # area_global_variable.var_parametersArea_Area04_X2 = request_data["area04_X2"]
-        # area_global_variable.var_parametersArea_Area04_Y2 = request_data["area04_Y2"]
+        match area_eixo:
+            case 'area01_X':
+                 area_global_variable.var_parametersArea_Area01_X1 = value[0]
+                 area_global_variable.var_parametersArea_Area01_X2 = value[1]
+            case 'area01_Y':
+                 area_global_variable.var_parametersArea_Area01_Y1 = value[0]
+                 area_global_variable.var_parametersArea_Area01_Y2 = value[1]
+            case 'area02_X':
+                 area_global_variable.var_parametersArea_Area02_X1 = value[0]
+                 area_global_variable.var_parametersArea_Area02_X2 = value[1]
+            case 'area02_Y':
+                 area_global_variable.var_parametersArea_Area02_Y1 = value[0]
+                 area_global_variable.var_parametersArea_Area02_Y2 = value[1]
+            case 'area03_X':
+                 area_global_variable.var_parametersArea_Area03_X1 = value[0]
+                 area_global_variable.var_parametersArea_Area03_X2 = value[1]
+            case 'area03_Y':
+                 area_global_variable.var_parametersArea_Area03_Y1 = value[0]
+                 area_global_variable.var_parametersArea_Area03_Y2 = value[1]
+            case 'area04_X':
+                 area_global_variable.var_parametersArea_Area04_X1 = value[0]
+                 area_global_variable.var_parametersArea_Area04_X2 = value[1]
+            case 'area04_Y':
+                 area_global_variable.var_parametersArea_Area04_Y1 = value[0]
+                 area_global_variable.var_parametersArea_Area04_Y2 = value[1]
         return 'ok'
+
 
     @app.route("/get_current_areas_params", methods=["GET"])
     def get_current_areas_params():
-        return {
-            "width":area_global_variable.var_size_max_img_width, 
-            "height":area_global_variable.var_size_max_img_height,
-            "area01_X1":area_global_variable.var_parametersArea_Area01_X1,
-            "area01_Y1":area_global_variable.var_parametersArea_Area01_Y1,
-            "area01_X2":area_global_variable.var_parametersArea_Area01_X2,
-            "area01_Y2":area_global_variable.var_parametersArea_Area01_Y2,
-            "area02_X1":area_global_variable.var_parametersArea_Area02_X1,
-            "area02_Y1":area_global_variable.var_parametersArea_Area02_Y1,
-            "area02_X2":area_global_variable.var_parametersArea_Area02_X2,
-            "area02_Y2":area_global_variable.var_parametersArea_Area02_Y2,
-            "area03_X1":area_global_variable.var_parametersArea_Area03_X1,
-            "area03_Y1":area_global_variable.var_parametersArea_Area03_Y1,
-            "area03_X2":area_global_variable.var_parametersArea_Area03_X2,
-            "area03_Y2":area_global_variable.var_parametersArea_Area03_Y2,
-            "area04_X1":area_global_variable.var_parametersArea_Area04_X1,
-            "area04_Y1":area_global_variable.var_parametersArea_Area04_Y1,
-            "area04_X2":area_global_variable.var_parametersArea_Area04_X2,
-            "area04_Y2":area_global_variable.var_parametersArea_Area04_Y2,
-            }
+        return {"width":area_global_variable.var_size_max_img_width,
+                "height":area_global_variable.var_size_max_img_height,
+                "area01_X1":area_global_variable.var_parametersArea_Area01_X1,
+                "area01_Y1":area_global_variable.var_parametersArea_Area01_Y1,
+                "area01_X2":area_global_variable.var_parametersArea_Area01_X2,
+                "area01_Y2":area_global_variable.var_parametersArea_Area01_Y2,
+                "area02_X1":area_global_variable.var_parametersArea_Area02_X1,
+                "area02_Y1":area_global_variable.var_parametersArea_Area02_Y1,
+                "area02_X2":area_global_variable.var_parametersArea_Area02_X2,
+                "area02_Y2":area_global_variable.var_parametersArea_Area02_Y2,
+                "area03_X1":area_global_variable.var_parametersArea_Area03_X1,
+                "area03_Y1":area_global_variable.var_parametersArea_Area03_Y1,
+                "area03_X2":area_global_variable.var_parametersArea_Area03_X2,
+                "area03_Y2":area_global_variable.var_parametersArea_Area03_Y2,
+                "area04_X1":area_global_variable.var_parametersArea_Area04_X1,
+                "area04_Y1":area_global_variable.var_parametersArea_Area04_Y1,
+                "area04_X2":area_global_variable.var_parametersArea_Area04_X2,
+                "area04_Y2":area_global_variable.var_parametersArea_Area04_Y2}
     
+
     @app.route("/get_areas", methods=["GET"])
     def get_areas():
         areas_name = GetAreasName.Select()
@@ -258,26 +280,35 @@ def init_app(app):
             return arrayFilters
         return []
 
+
     @app.route("/change_current_areas", methods=["POST"])
     def change_current_areas():
         request_data = request.get_json()
-        area_global_variable.var_parametersArea_id = request_data['id']
-        GetAreasByID.Select()
+        id = request_data['id']
+        if id < 1:
+            return "id is required"
+        
+        ChangeCurrentArea.Change(id)
         return "ok"
+
 
     @app.route("/save_areas", methods=["POST"])
     def save_areas():
         request_data = request.get_json()
-        area_global_variable.var_parametersArea_name = request_data['name']
-        Save_areas.save()
-
+        Save_areas.save(request_data['name'])
         return "ok"
     
+
     @app.route("/delete_areas", methods=["POST"])
     def delete_areas():
         db_Delete.Delete()
         return "ok"
         
+
+
+
+
+
 
 
     ############### API FLASK ###############
