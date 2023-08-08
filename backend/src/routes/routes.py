@@ -300,12 +300,67 @@ def init_app(app):
         global_fitlers.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Min = request_data['min']		                    = 1
         global_fitlers.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Max = request_data['max']
         return "ok"
-
+    
+    @app.route("/clear_filters_params", methods=["POST"])
+    def clear_filters_params():
+        global_fitlers.var_name = ""
+        global_fitlers.var_parametersFilter_selectFilterColor_Red_Min = 0
+        global_fitlers.var_parametersFilter_selectFilterColor_Red_Max = 0
+        global_fitlers.var_parametersFilter_selectFilterColor_Green_Min = 0
+        global_fitlers.var_parametersFilter_selectFilterColor_Green_Max = 0
+        global_fitlers.var_parametersFilter_selectFilterColor_Blue_Min = 0
+        global_fitlers.var_parametersFilter_selectFilterColor_Blue_Max = 0
+        global_fitlers.var_parametersFilter_DefinedAreaForFilter_init_X = 0
+        global_fitlers.var_parametersFilter_DefinedAreaForFilter_init_Y = 0
+        global_fitlers.var_parametersFilter_Iterations_erode = 0
+        global_fitlers.var_parametersFilter_Iterations_dilate = 0
+        global_fitlers.var_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Min = 0
+        global_fitlers.var_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Max = 0
+        global_fitlers.var_parametersFilter_SpliceLineJumpWhiteVer_IdAreasOfOperationInTheFilter = 0
+        global_fitlers.var_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Min = 0
+        global_fitlers.var_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Max = 0
+        global_fitlers.var_parametersFilter_SpliceLineJumpWhiteHor_IdAreasOfOperationInTheFilter = 0
+        global_fitlers.var_parametersFilter_SpliceLineJumpingBlackColorVertically_JumpSize_Min = 0
+        global_fitlers.var_parametersFilter_SpliceLineJumpingBlackColorVertically_JumpSize_Max = 0
+        global_fitlers.var_parametersFilter_SpliceLineJumpBlackVer_IdAreasOfOperationInTheFilter = 0
+        global_fitlers.var_parametersFilter_SpliceLineJumpingBlackColorHorizontally_JumpSize_Min = 0
+        global_fitlers.var_parametersFilter_SpliceLineJumpingBlackColorHorizontally_JumpSize_Max = 0
+        global_fitlers.var_parametersFilter_SpliceLineJumpBlackHor_IdAreasOfOperationInTheFilter = 0
+        global_fitlers.var_parametersFilter_FoundObjectSizeFilter_Min = 0
+        global_fitlers.var_parametersFilter_FoundObjectSizeFilter_Max = 0
+        global_fitlers.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Min = 0
+        global_fitlers.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Max = 0
+        global_fitlers.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Min = 0
+        global_fitlers.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Max = 0
+        return "ok"
 
 
 
     ############### API DAS AREAS ###############
     ###############################################
+
+    @app.route("/clear_areas_params", methods=["POST"])
+    def clear_areas_params():
+        area_global_variable.var_parametersArea_id = None
+        area_global_variable.var_parametersArea_name = None
+        area_global_variable.var_parametersArea_Area01_X1 = 0
+        area_global_variable.var_parametersArea_Area01_Y1 = 0
+        area_global_variable.var_parametersArea_Area01_X2 = 0
+        area_global_variable.var_parametersArea_Area01_Y2 = 0
+        area_global_variable.var_parametersArea_Area02_X1 = 0
+        area_global_variable.var_parametersArea_Area02_Y1 = 0
+        area_global_variable.var_parametersArea_Area02_X2 = 0
+        area_global_variable.var_parametersArea_Area02_Y2 = 0
+        area_global_variable.var_parametersArea_Area03_X1 = 0
+        area_global_variable.var_parametersArea_Area03_Y1 = 0
+        area_global_variable.var_parametersArea_Area03_X2 = 0
+        area_global_variable.var_parametersArea_Area03_Y2 = 0
+        area_global_variable.var_parametersArea_Area04_X1 = 0
+        area_global_variable.var_parametersArea_Area04_Y1 = 0
+        area_global_variable.var_parametersArea_Area04_X2 = 0
+        area_global_variable.var_parametersArea_Area04_Y2 = 0 
+        return "ok"
+    
     @app.route("/set_areas", methods=["POST"])
     def create_areas():
         request_data = request.get_json()
@@ -339,7 +394,6 @@ def init_app(app):
                  area_global_variable.var_parametersArea_Area04_Y2 = value[1]
         return 'ok'
 
-
     @app.route("/get_current_areas_params", methods=["GET"])
     def get_current_areas_params():
         return {"width":area_global_variable.var_size_max_img_width,
@@ -361,7 +415,6 @@ def init_app(app):
                 "area04_X2":area_global_variable.var_parametersArea_Area04_X2,
                 "area04_Y2":area_global_variable.var_parametersArea_Area04_Y2}
     
-
     @app.route("/get_areas", methods=["GET"])
     def get_areas():
         try:
@@ -373,7 +426,6 @@ def init_app(app):
         except: 
             return []
 
-
     @app.route("/change_current_areas", methods=["POST"])
     def change_current_areas():
         request_data = request.get_json()
@@ -384,24 +436,17 @@ def init_app(app):
         ChangeCurrentArea.Change(id)
         return "ok"
 
-
     @app.route("/save_areas", methods=["POST"])
     def save_areas():
         request_data = request.get_json()
         Save_areas.save(request_data['name'])
         return "ok"
     
-
     @app.route("/delete_areas", methods=["POST"])
     def delete_areas():
         db_Delete.Delete()
         return "ok"
         
-
-
-
-
-
 
 
     ############### API FLASK ###############
