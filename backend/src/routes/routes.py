@@ -280,7 +280,26 @@ def init_app(app):
          global_fitlers.var_parametersFilter_SpliceLineJumpBlackHor_IdAreasOfOperationInTheFilter =  request_data["id"]
          return "ok"
     
-
+    @app.route("/found_object_size_filter", methods=["POST"])
+    def found_object_size_filter():
+        request_data = request.get_json()
+        global_fitlers.var_parametersFilter_FoundObjectSizeFilter_Min = request_data['min']		                    = 1
+        global_fitlers.var_parametersFilter_FoundObjectSizeFilter_Max = request_data['max']
+        return "ok"
+    
+    @app.route("/vertical_line_size_filter", methods=["POST"])
+    def vertical_line_size_filter():
+        request_data = request.get_json()
+        global_fitlers.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Min = request_data['min']		                    = 1
+        global_fitlers.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Max = request_data['max']
+        return "ok"
+    
+    @app.route("/horizontal_line_size", methods=["POST"])
+    def horizontal_line_size():
+        request_data = request.get_json()
+        global_fitlers.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Min = request_data['min']		                    = 1
+        global_fitlers.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Max = request_data['max']
+        return "ok"
 
 
 

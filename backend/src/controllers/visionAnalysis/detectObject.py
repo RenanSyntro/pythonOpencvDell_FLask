@@ -309,6 +309,7 @@ def detect_motion():
 		cap = cv2.VideoCapture(1)
 		time.sleep(1)
 
+
 		if (cap.isOpened()):
 			console.print("Conectado com webcam", style="green on black")
 
