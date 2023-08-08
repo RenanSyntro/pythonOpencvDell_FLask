@@ -116,33 +116,6 @@ class Insert_parametersAdjustFilterImg():
             res = CheckIfRecipeNameAlreadyExists(name) 
         
             if (res is None):
-                
-                # print(f"INSERT INTO parametersAdjustFilterImg VALUE"
-                #             f"(0,  {name}, "
-                #             f"{FilterColor_Red_Min}, {FilterColor_Red_Max}, "
-                #             f"{FilterColor_Green_Min}, {FilterColor_Green_Max}, "
-                #             f"{FilterColor_Blue_Min}, {FilterColor_Blue_Max}, "
-                #             f"{DefinedAreaForFilter_init_X}, {DefinedAreaForFilter_init_Y}, "
-                #             f"{FilterInterations_Erode}, {FilterInterations_Dilate}, "
-                #             f"{SpliceLineJumpWhiteVer_JumpSize_Min}, {SpliceLineJumpWhiteVer_JumpSize_Max}, "
-                #             f"{SpliceLineJumpWhiteVer_JumpSize_Field},"
-                #             f"{SpliceLineJumpWhiteHor_JumpSize_Min}, {SpliceLineJumpWhiteHor_JumpSize_Max}, "
-                #             f"{SpliceLineJumpWhiteHor_JumpSize_Field},"
-                #             f"{SpliceLineJumpBlackVer_JumpSize_Min}, {SpliceLineJumpBlackVer_JumpSize_Max}, "
-                #             f"{SpliceLineJumpBlackVer_JumpSize_Field},"
-                #             f"{SpliceLineJumpBlackHor_JumpSize_Min}, {SpliceLineJumpBlackHor_JumpSize_Max}, "
-                #             f"{SpliceLineJumpBlackHor_JumpSize_Field},"
-                #             f"{FoundObjectSizeFilter_Min}, {FoundObjectSizeFilter_Max}, "
-                #             f"{VerticalLineSizeFilterOfFoundObject_Min}, {VerticalLineSizeFilterOfFoundObject_Max}, "
-                #             f"{HorizontalLineSizeFilterOfFoundObject_Min}, {HorizontalLineSizeFilterOfFoundObject_Max}, "
-                #             f"{parameter01}, {parameter02}, {parameter03},  {parameter04}, {parameter05}, "
-                #             f"{parameter06}, {parameter07}, {parameter08},  {parameter09}, {parameter10}, "
-                #             f"{ConstResolutionPixelMm_X},  {ConstResolutionPixelMm_Y}, "
-                #             f"{parameterReal01}, {parameterReal02}, {parameterReal03}, {parameterReal04}, "
-                #             f"{parameterReal05}, {parameterReal06}, {parameterReal07}, {parameterReal08}"
-                #             ")"
-                #             )  
-
                 cur.execute("INSERT INTO parametersAdjustFilterImg VALUE"
                             "(0, %s, "
                             "%s, %s, "

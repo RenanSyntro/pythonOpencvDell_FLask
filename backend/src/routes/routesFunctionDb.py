@@ -21,7 +21,6 @@ def init_app(app):
     
     @app.route("/form-salvar", methods=["get"])
     def formsalvar():
-        print("Chamada de evento ok")
         Insert_parametersAdjustFilterImg.salvar()
         return render_template('base.html')
     

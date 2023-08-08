@@ -10,6 +10,7 @@ import controllers.plc
 import time
 from datetime 					import datetime
 from enum                       import Enum
+import controllers.visionAnalysis.area_design as desenhar_area
 from services.clearPixelNoise 	import clearPixelLine, clearPixelColum
 from rich.console				import Console
 from rich.table					import Table
@@ -48,23 +49,23 @@ def detect_motion():
 	def convertPixelToMm_X(pxX):
 		#Com variacao de altura do robo ajusta os pixel para continuar na unidade de mm
 		#Em 300mmm o cada 0.83 pix representa 1mm
-		if (controllers.varGlobal.adjustmentPanel.varTrackbar_ConstResolutionPixelMm_X <= 0):
+		if (global_variable.varTrackbar_ConstResolutionPixelMm_X <= 0):
 			valorPixel =  controllers.plc.CP_I_DistanceBetweenCameraAndObject * 0.83 / 300  
 			return pxX * valorPixel
 		else:
 		#Este retorno abaixo indica um valor statico independento do eixo Z
-			return pxX * controllers.varGlobal.adjustmentPanel.varTrackbar_ConstResolutionPixelMm_X
+			return pxX * global_variable.varTrackbar_ConstResolutionPixelMm_X
 	
 
 	def convertPixelToMm_Y(pxY):
 		#Com variacao de altura do robo ajusta os pixel para continuar na unidade de mm
 		#Em 300mmm o cada 0.83 pix representa 1mm
-		if (controllers.varGlobal.adjustmentPanel.varTrackbar_ConstResolutionPixelMm_Y <= 0):
+		if (global_variable.varTrackbar_ConstResolutionPixelMm_Y <= 0):
 			valorPixel = controllers.plc.CP_I_DistanceBetweenCameraAndObject * 	0.83 / 300  
 			return pxY * valorPixel
 		else:
 		#Este retorno abaixo indica um valor statico independento do eixo Z
-			return pxY * controllers.varGlobal.adjustmentPanel.varTrackbar_ConstResolutionPixelMm_Y
+			return pxY * global_variable.varTrackbar_ConstResolutionPixelMm_Y
 		
 	def convertMmToPixel_X(mmX):
 		return mmX / 2.08333
@@ -162,25 +163,25 @@ def detect_motion():
 
 			if len(contorno) > 0:
 				if (
-						area > controllers.varGlobal.adjustmentPanel.var_parametersFilter_FoundObjectSizeFilter_Min 
-					and area < controllers.varGlobal.adjustmentPanel.var_parametersFilter_FoundObjectSizeFilter_Max):
+						area > global_variable.var_parametersFilter_FoundObjectSizeFilter_Min 
+					and area < global_variable.var_parametersFilter_FoundObjectSizeFilter_Max):
 					    
 					rectYellow 	= cv2.minAreaRect(contorno)
 					boxYellow 	= cv2.boxPoints(rectYellow)  
 					boxYellow 	= np.int0(boxYellow)
 
 					if(
-							controllers.varGlobal.adjustmentPanel.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Max 		> 0 
-						and controllers.varGlobal.adjustmentPanel.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Max	> 0 
+							global_variable.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Max 		> 0 
+						and global_variable.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Max	> 0 
 						):
 			
 						checkingBoxSize_r_withinRange, withinRange_r_line01, withinRange_r_line02 = checkingBoxSize(
 							boxYellow,
-							controllers.varGlobal.adjustmentPanel.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Min,
-							controllers.varGlobal.adjustmentPanel.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Max,
+							global_variable.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Min,
+							global_variable.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Max,
 
-							controllers.varGlobal.adjustmentPanel.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Min,
-							controllers.varGlobal.adjustmentPanel.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Max,
+							global_variable.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Min,
+							global_variable.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Max,
 							)
 
 						if (checkingBoxSize_r_withinRange):
@@ -245,11 +246,11 @@ def detect_motion():
 						cv2.drawContours(frame03, [boxYellow], 0, (0, 255, 255), 2)
 						checkingBoxSize_r_withinRange, withinRange_r_line01, withinRange_r_line02 = checkingBoxSize(
 							boxYellow,
-							controllers.varGlobal.adjustmentPanel.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Min,
-							controllers.varGlobal.adjustmentPanel.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Max,
+							global_variable.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Min,
+							global_variable.var_parametersFilter_HorizontalLineSizeFilterOfFoundObject_Max,
 
-							controllers.varGlobal.adjustmentPanel.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Min,
-							controllers.varGlobal.adjustmentPanel.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Max,
+							global_variable.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Min,
+							global_variable.var_parametersFilter_VerticalLineSizeFilterOfFoundObject_Max,
 							)
 
 						#cv2.putText(frame01,
@@ -319,12 +320,12 @@ def detect_motion():
 				#frame_dibujar 		= frame.copy()
 				#frame = cv2.imread("./testeCut.jpg")
 				
-				l_h = controllers.varGlobal.adjustmentPanel.var_parametersFilter_selectFilterColor_Red_Min
-				l_s = controllers.varGlobal.adjustmentPanel.var_parametersFilter_selectFilterColor_Green_Min
-				l_v = controllers.varGlobal.adjustmentPanel.var_parametersFilter_selectFilterColor_Blue_Min
-				u_h = controllers.varGlobal.adjustmentPanel.var_parametersFilter_selectFilterColor_Red_Max
-				u_s = controllers.varGlobal.adjustmentPanel.var_parametersFilter_selectFilterColor_Green_Max
-				u_v = controllers.varGlobal.adjustmentPanel.var_parametersFilter_selectFilterColor_Blue_Max
+				l_h = global_variable.var_parametersFilter_selectFilterColor_Red_Min
+				l_s = global_variable.var_parametersFilter_selectFilterColor_Green_Min
+				l_v = global_variable.var_parametersFilter_selectFilterColor_Blue_Min
+				u_h = global_variable.var_parametersFilter_selectFilterColor_Red_Max
+				u_s = global_variable.var_parametersFilter_selectFilterColor_Green_Max
+				u_v = global_variable.var_parametersFilter_selectFilterColor_Blue_Max
 
 				lower = np.array([l_h, l_s, l_v])
 				upper = np.array([u_h, u_s, u_v])
@@ -338,7 +339,7 @@ def detect_motion():
 				
 				frame03 	= cv2.erode(frame03, 
 									None, 
-									iterations = controllers.varGlobal.adjustmentPanel.var_parametersFilter_Iterations_erode)
+									iterations = global_variable.var_parametersFilter_Iterations_erode)
 				#hsv 	= cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 				frame01 	= cv2.inRange(frame03, lower, upper)
 				#result 	= cv2.bitwise_and(frame, frame, mask=mask)
@@ -348,46 +349,21 @@ def detect_motion():
 
 				cutLine = cv2.cvtColor(frame01, cv2.COLOR_BGR2RGB)
 				clearPixelLine.cutLineBySize(cutLine, 
-												controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Min, 
-												controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Max)
+												global_variable.var_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Min, 
+												global_variable.var_parametersFilter_SpliceLineJumpingWhiteColorVertically_JumpSize_Max)
 				
 				clearPixelColum.cutColumBySize(cutLine, 
-												controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Min, 
-												controllers.varGlobal.adjustmentPanel.var_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Max)
+												global_variable.var_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Min, 
+												global_variable.var_parametersFilter_SpliceLineJumpingWhiteColorHorizontally_JumpSize_Max)
 				
 				frame02 = cv2.cvtColor(cutLine, cv2.COLOR_BGR2GRAY)
 				dibujar(frame01, frame02, frame03, (255,0,0)) #mask
 
+				frame03 = desenhar_area.desenhar_area1(frame03)
+				frame03 = desenhar_area.desenhar_area2(frame03)
+				frame03 = desenhar_area.desenhar_area3(frame03)
+				frame03 = desenhar_area.desenhar_area4(frame03)
 
-				# x1, y1 = 100, 100  # Coordenadas do canto superior esquerdo do retângulo
-				# x2, y2 = 300, 200  # Coordenadas do canto inferior direito do retângulo
-
-				x1 = area_global_variable.var_parametersArea_Area01_X1
-				y1 = area_global_variable.var_parametersArea_Area01_Y1
-				x2 = area_global_variable.var_parametersArea_Area01_X2
-				y2 = area_global_variable.var_parametersArea_Area01_Y2
-
-
-				cor_retangulo = (0, 255, 0)  # Cor do retângulo (verde no formato BGR)
-				espessura_retangulo = 2  # Espessura da linha do retângulo
-				cv2.rectangle(frame03, (x1, y1), (x2, y2), cor_retangulo, espessura_retangulo)
-
-				# Definir a cor do retângulo com transparência
-				cor_retangulo = (0, 255, 255)  # Cor amarela no formato BGR
-
-
-				# x1, y1 = 300, 200  # Coordenadas do canto superior esquerdo do retângulo
-				# x2, y2 = 500, 500  # Coordenadas do canto inferior direito do retângulo
-				# Definir a intensidade de transparência (valor entre 0 e 1)
-
-				
-				transparencia = 0.5
-
-				# Desenhar o retângulo na imagem com transparência
-				frame03 = cv2.addWeighted(frame03, 1 - transparencia, cv2.rectangle(frame03.copy(), (x1, y1), (x2, y2), cor_retangulo, -1), transparencia, 0)
-
-				#ps.putBText(image,text,text_offset_x=20,text_offset_y=20,vspace=10,hspace=10, font_scale=1.0,background_RGB=(228,225,222),text_RGB=(1,1,1))
-				
 				controllers.frames.frames.changeState_outputVideoLayer01(frame01)
 				controllers.frames.frames.changeState_outputVideoLayer02(frame02)
 				controllers.frames.frames.changeState_outputVideoLayer03(frame03)

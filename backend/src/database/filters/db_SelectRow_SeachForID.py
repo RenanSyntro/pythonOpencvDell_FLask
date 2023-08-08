@@ -14,7 +14,6 @@ class selectRow_SearchForID():
                 #Name
                 #
                 controllers.varGlobal.adjustmentPanel.var_name                                                                      = data[1]
-                print(controllers.varGlobal.adjustmentPanel.var_name)
 
                 #
                 #Color
